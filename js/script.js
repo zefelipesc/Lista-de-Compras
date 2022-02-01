@@ -129,20 +129,6 @@ class Item {
         }
     }
 
-    lerCliente() {
-        fetch(`https://randomuser.me/api/?results=1`)
-        .then((resp) => resp.json())
-        .then((response) => {
-            //o reduce executa a função de callback uma vez para cada elemento presente no array, a fim de 
-            //produzir um único resultado
-             const nomeCliente = response.results.reduce(
-                 (html, response) => html +  `Nome: ${response.name.first} ${response.name.last} - Email: ${response.email} `,''            
-        ) 
-       let dadosCliente = JSON.stringify(nomeCliente)  
-        })
-    }
-    
-
     excluir(id) {
 
         let corpoTabela = document.getElementById('corpoTabela');
