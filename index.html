@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>"
+</head>
+
+<body>
+
+    <main>
+
+        <div class="titulo">
+            <h2>Lista de Compras</h2>
+        </div>
+
+
+        <div class="container">
+
+            <div class="entrada">
+                <label>Item</label>
+                <!--representa a legenda de um elemento, nesse caso o campo input-->
+                <input type="text" id="nomeItem" placeholder="Nome do item">
+            </div>
+
+            <div class="entrada">
+                <label>Preço</label>
+                <input type="number" id="precoItem" placeholder="Preço do item">
+                <!--placeholder é o nome transparente dentro dos inputs-->
+            </div>
+
+            <!--Toda vez que o usuário clicar em adicionar item, ou seja, chamar a função salvar item
+            um objeto do tipo Item vai ser instanciado, e colocado dentro do array-->
+            <button onclick="item.salvarItem()">Salvar</button>
+            <button onclick="item.limparCampos()">Cancelar</button>
+            <button class="btn-limparTabela" onclick="item.excluirTodosOsItens()">Limpar Tabela</button>
+        </div>
+
+        <div class="tabela">
+            <table border="1">
+                <thead>
+                    <!--cabeçalho da tabela-->
+                    <th>Cliente</th>
+                    <th>Id</th>
+                    <th>Item</th>
+                    <th>Preço</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </thead>
+                <tbody id="corpoTabela">
+                    <!--conteúdo da tabela-->
+                    <tr>
+                        <!--linha da tabela-->
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

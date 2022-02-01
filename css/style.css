@@ -1,0 +1,95 @@
+* {
+    /*aqui fazemos com que o título encoste no topo da página*/
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titulo {
+    background-color: paleturquoise;
+    padding: 20px; /*define a distância entre o conteúdo do elemento e as bordas*/
+    color: black;
+    text-align: center; 
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+main {
+    padding: 30px 50px; /*espaçamento entre o topo e as laterais*/
+}
+
+/*como o container é uma classe então eu tenho que referenciá-lo com um .*/
+.container {
+    background-color: darkgray;
+    border: 3px solid black;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 8px; /*borda arredondada*/
+
+}
+
+.entrada {
+    display: grid; /*faz com que os campos fiquem um em baixo do outro*/
+    margin-bottom: 10px; /*faz com que tenha um espaçamento entre os botões*/
+}
+
+input {
+    padding: 10px; /*aumenta o tamanho dos campos*/
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+button {
+    background-color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all ease-in-out 0.2s; /*faz com que tenha um efeito de quando o usuário passar o mouse 
+                                        em cima o botão escurece para a cor definida no button:hover*/
+}
+
+.btn-limparTabela  {
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all ease-in-out 0.2s;
+}
+
+button:hover {
+    background-color:paleturquoise;
+}
+
+
+.tabela {
+    margin-top: 25px;
+}
+
+table {
+    background-color:gainsboro;
+    width: 100%; /*faz com que a tabela preencha 100% da tela*/
+    border: 2px solid black;
+    border-collapse: collapse; /*define o modelo da borda da tabela*/
+    
+}
+
+tr:nth-child(even){
+    background-color: white
+}
+
+table th {
+    background-color: paleturquoise;
+    padding: 7px;
+}
+
+/*acessa a coluna da tabela para configurar o estilo dos ícones de editar e excluir*/
+table td img {
+    width: 25px;
+}
+
+/*toda vez que essa classe for chamada os elementos vão ser centralizados*/
+.centralizar {
+    text-align: center;
+}
