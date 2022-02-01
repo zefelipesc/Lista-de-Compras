@@ -10,7 +10,7 @@ class Item {
     essa classe for executada */
 
     lerEntrada() {
-        let item = {}
+        let item = {} //digo que essa variável agora é um objeto
         item.id = this.id
 
         /* pego o que o usuário digitou no campo input cujo id é 'nomeItem'
@@ -22,7 +22,7 @@ class Item {
         return item;
     }
 
-    salvarItem() {
+    async salvarItem() {
         /* toda vez que o usuário clicar para salvar um item, ele chama o método lerEntrada, pega os dados
         joga dentro do objeto item (dentro do método ler entrada, depois esse objeto é retornado para o 
         método salvarItem, que é armazenado no itemSalvo*/
@@ -44,7 +44,7 @@ class Item {
             }
         }
 
-        this.listarItens();
+        await this.listarItens();
         this.limparCampos();
 
     }
@@ -60,7 +60,6 @@ class Item {
     }
 
     validaçãoDeEntrada() {
-        let erro = '';
         let nome = document.getElementById('nomeItem').value;
         let preco = document.getElementById('precoItem').value;
 
@@ -74,7 +73,7 @@ class Item {
         }
     }
 
-    listarItens() {
+    async listarItens() {
 
         let corpoTabela = document.getElementById('corpoTabela');
         corpoTabela.innerText = '';
@@ -83,6 +82,7 @@ class Item {
         for (let i = 0; i < this.listaDeItens.length; i++) {
             let linha = corpoTabela.insertRow(); // insere uma linha na tabela
 
+            let nomeCliente = await this.getCliente();
             let colunaNomeEmail = linha.insertCell(); // cria uma nova coluna
             let colunaId = linha.insertCell();
             let colunaItem = linha.insertCell();
@@ -97,17 +97,8 @@ class Item {
             colunaEditar.classList.add('centralizar');
             colunaExcluir.classList.add('centralizar');
 
-            fetch(`https://randomuser.me/api/?results=1`)
-                 .then((resp) => resp.json())
-                 .then((response) => {
-                //o reduce executa a função de callback uma vez para cada elemento presente no array, a fim de 
-                //produzir um único resultado
-                 const nomeCliente = response.results.reduce(
-                     (html, response) => html +  `Nome: ${response.name.first} ${response.name.last} - Email: ${response.email} `,''            
-            ) 
-            colunaNomeEmail.innerText = JSON.stringify(nomeCliente)  
-            })
           
+            colunaNomeEmail.innerText = JSON.stringify(nomeCliente);
             colunaId.innerText = this.listaDeItens[i].id;
             colunaItem.innerText = this.listaDeItens[i].nome;
             colunaPreco.innerText = this.listaDeItens[i].preco;
@@ -128,6 +119,22 @@ class Item {
             colunaExcluir.appendChild(iconExcluir);
         }
     }
+
+    async getCliente(){
+        let nomeCliente = ''
+        fetch(`https://randomuser.me/api/?results=1`)
+                       .then((resp) => resp.json())
+                       .then((response) => {
+                      //o reduce executa a função de callback uma vez para cada elemento presente no array, a fim de 
+                      //produzir um único resultado
+                        return response.results.reduce(
+                           (html, response) => html +  `Nome: ${response.name.first} ${response.name.last} - Email: ${response.email} `,''            
+                  )
+                  })
+       
+      }
+      
+      
 
     excluir(id) {
 
